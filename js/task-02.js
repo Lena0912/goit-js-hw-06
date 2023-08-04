@@ -6,11 +6,14 @@ const ingredients = [
   "Herbs",
   "Condiments",
 ];
-const list = document.querySelector("#ingredients");
 
-const markup = ingredients
-  .map((ingredient) => `<li class="item">${ingredient}</li>`)
-  .join("");
-list.insertAdjacentHTML("beforeend", markup);
+const ingredientList = document.getElementById('ingredients');
+const fragment = document.createDocumentFragment();
+ingredients.forEach(ingredient => {
+  const li = document.createElement('li');
+  li.textContent = ingredient;
+  li.classList.add('item');
+  fragment.appendChild(li);
+});
+ingredientList.appendChild(fragment);
 
-console.log(markup);
